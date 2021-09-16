@@ -1,0 +1,24 @@
+using UnityEngine;
+
+namespace DefaultNamespace
+{
+    public class TileController : MonoBehaviour
+    {
+
+        #region Public
+
+        #endregion
+
+        #region Unity
+
+        #endregion
+
+        #region Action
+
+        #endregion
+
+        #region Private
+
+        #endregion
+    }
+}

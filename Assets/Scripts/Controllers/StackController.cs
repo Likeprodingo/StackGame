@@ -44,10 +44,25 @@ public class StackController : MonoBehaviour
 
     #endregion
 
+    #region Action
+
+    private void TileOnDepleted(TileController tile)
+    {
+        tile.Depleted -= TileOnDepleted;
+        SelectNextTile();
+    }
+
+    #endregion
+
     #region Private
 
     private void SelectNextTile()
     {
+        if (_selectedTile == _groundTileController)
+        {
+            return;
+        }
+
         if (_placedTiles.Count > 0)
         {
             _selectedTile = _placedTiles.Pop();
@@ -56,20 +71,27 @@ public class StackController : MonoBehaviour
         {
             _selectedTile = _groundTileController;
         }
+        
+        _selectedTile.Activate();
     }
-    
+
     private void AddTile(TileTypeEnum type)
     {
         var prefab = AssetManager.Instance.GetTileByType(type);
         var tile = ObjectPool.Instance.Get<TileController>(prefab,
             new Vector3(0, _placedTiles.Count * _tileDeltaPos, 0), Quaternion.identity,
             _stackParent);
+        tile.Depleted += TileOnDepleted;
         _placedTiles.Push(tile);
     }
-    
+
     private void ClearStack()
     {
-        _placedTiles.Clear();
+        for (int i = 0; i < _placedTiles.Count; i++)
+        {
+            var tile = _placedTiles.Pop();
+            tile.Depleted -= TileOnDepleted;
+        }
     }
 
     #endregion

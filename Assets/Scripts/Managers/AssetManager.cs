@@ -7,7 +7,7 @@ namespace DefaultNamespace
 {
     public class AssetManager : Singleton<AssetManager>
     {
-        [field: SerializeField] public List<TileData> TileDataList { get; private set; }  = new List<TileData>();
+        [field: SerializeField] public List<DepletingTileData> TileDataList { get; private set; }  = new List<DepletingTileData>();
 
         public TileController GetTileByType(TileTypeEnum typeEnum)
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public abstract class DepletingTileController : TileController
+    public class BattleHandleManager : MonoBehaviour
     {
 
         #region Public
@@ -17,7 +17,8 @@ namespace DefaultNamespace
 
         #endregion
 
-        #region Protected
+        #region Private
+
         #endregion
     }
 }

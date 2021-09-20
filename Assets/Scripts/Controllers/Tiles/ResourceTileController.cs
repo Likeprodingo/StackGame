@@ -1,9 +1,14 @@
+using System;
+using DefaultNamespace.Enums;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class ResourceTileController : DepletingTileController
+    public class ResourceTileController : TileController
     {
+        public static event Action<ResourceData> ResourcePicked = delegate {  };
+            
+        [SerializeField] private ResourceData _resource;
 
         #region Public
 
@@ -21,7 +26,11 @@ namespace DefaultNamespace
 
         public override void Process()
         {
-            Destroy(this);
+            ResourcePicked(_resource);
+            if (_resource.Count == 0)
+            {
+                Deplete();
+            }
         }
 
         #endregion

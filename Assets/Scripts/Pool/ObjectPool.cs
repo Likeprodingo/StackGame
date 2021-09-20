@@ -19,16 +19,12 @@ namespace Pool
 
         public void PreparePool()
         {
-            PrepareList(AssetManager.Instance.TileDataList);
-        }
-
-        private void PrepareList<T>(List<T> poolObjectDataList) where T : PoolObjectData
-        {
-            for (int i = 0; i < poolObjectDataList.Count; i++)
+            for (int i = 0; i < AssetManager.Instance.TileDataList.Count; i++)
             {
-                Prepare(poolObjectDataList[i].Prefab, poolObjectDataList[i].PrepareCount);
+                Prepare(AssetManager.Instance.TileDataList[i].Prefab, AssetManager.Instance.TileDataList[i].PrepareCount);
             }
         }
+        
 
         private PooledObject PrepareObject(PooledObject pooledBehaviour)
         {

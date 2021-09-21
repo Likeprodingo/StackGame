@@ -26,7 +26,7 @@ namespace UI
 
         private void Awake()
         {
-            _camera = Camera.current;
+            _camera = Camera.main;
         }
 
         #endregion

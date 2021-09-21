@@ -16,10 +16,31 @@ namespace DefaultNamespace
             Count = count;
         }
 
-        public ResourceData Pick(int count)
+        public void Add(ResourceData data)
         {
+            Count += data.Count;
+        }
+        
+        public bool Take(int count, out ResourceData resource)
+        {
+            if (Count < count)
+            {
+                resource = null;
+                return false;
+            }
             Count -= count;
-            return new ResourceData(Type, count);
+            resource = new ResourceData(Type, count);
+            return true;
+        }
+        
+        public bool Take(int count)
+        {
+            if (Count < count)
+            {
+                return false;
+            }
+            Count -= count;
+            return true;
         }
     }
 }

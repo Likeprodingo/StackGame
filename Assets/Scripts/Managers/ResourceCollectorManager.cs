@@ -1,13 +1,14 @@
 using System;
+using System.Collections.Generic;
+using DefaultNamespace.Enums;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class ResourceCollectorManager : MonoBehaviour
     {
-
-        public static event Action<ResourceData> ResourceCollected = delegate {  };
-
+        [SerializeField] private InventoryManager _inventoryManager;
+        
         #region Public
 
         #endregion
@@ -30,8 +31,10 @@ namespace DefaultNamespace
         
         private void ResourceTileControllerOnResourcePicked(ResourceData resource)
         {
-            ResourceData collectedResource = resource.Pick(1);
-            ResourceCollected(collectedResource);
+            if (resource.Take(1, out ResourceData newResource))
+            {
+                _inventoryManager.Add(newResource);
+            }
         }
         
         #endregion

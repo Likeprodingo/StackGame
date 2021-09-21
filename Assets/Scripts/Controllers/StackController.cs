@@ -78,7 +78,7 @@ public class StackController : MonoBehaviour
     private void AddTile(TileTypeEnum type)
     {
         var prefab = AssetManager.Instance.GetTileByType(type);
-        var tile = ObjectPool.Instance.Get<TileController>(prefab,
+        var tile = ObjectPool.Instance.Get<TileController>(prefab, _stackParent.position + 
             new Vector3(0, _placedTiles.Count * _tileDeltaPos, 0), Quaternion.identity,
             _stackParent);
         tile.Depleted += TileOnDepleted;

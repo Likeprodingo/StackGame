@@ -12,13 +12,13 @@ public class StackController : MonoBehaviour
     [Header("References")] [SerializeField]
     private List<TileTypeEnum> _tileTypes;
 
-    [SerializeField] private GroundTileController _groundTileController;
+    [SerializeField] private BaseTileController _groundTileController;
     [SerializeField] private Transform _stackParent;
     [Header("Values")] [SerializeField] private float _tileDeltaPos;
 
     private readonly Stack<TileController> _placedTiles = new Stack<TileController>();
 
-    private TileController _selectedTile;
+    private BaseTileController _selectedTile;
 
     #region Public
 
@@ -71,7 +71,6 @@ public class StackController : MonoBehaviour
         {
             _selectedTile = _groundTileController;
         }
-        
         _selectedTile.Activate();
     }
 

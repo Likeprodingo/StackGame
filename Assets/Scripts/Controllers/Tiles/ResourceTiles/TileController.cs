@@ -4,20 +4,18 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public abstract class TileController : PooledObject, IUsesProcessable
+    public abstract class TileController : BaseTileController
     {
         public event Action<TileController> Depleted = delegate {  };
         
-        [SerializeField] protected Collider _collider;
-        
         #region Public
 
-        public virtual void Activate()
+        public override void Activate()
         {
             _collider.enabled = true;
         }
 
-        public virtual void Deactivate()
+        public override void Deactivate()
         {
             _collider.enabled = false;
         }
@@ -27,8 +25,6 @@ namespace DefaultNamespace
             base.SpawnFromPool();
             Deactivate();
         }
-        
-        public abstract void Process();
         
         #endregion
 

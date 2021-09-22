@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class GroundTileController : TileController
+    public class GroundTileController : BaseTileController 
     {
 
         #region Public
-
+        
         public override void Process()
         {
             

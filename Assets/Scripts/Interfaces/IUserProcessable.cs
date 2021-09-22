@@ -1,6 +1,6 @@
 namespace DefaultNamespace
 {
-    public interface IUsesProcessable
+    public interface IUserProcessable
     {
         void Process();
     }

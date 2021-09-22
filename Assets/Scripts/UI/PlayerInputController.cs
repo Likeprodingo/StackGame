@@ -14,7 +14,7 @@ namespace UI
         public void OnPointerDown(PointerEventData eventData)
         {
             if (Physics.Raycast(_camera.ScreenPointToRay(eventData.position), out RaycastHit hit) &&
-                hit.transform.TryGetComponent(out IUsesProcessable obj))
+                hit.transform.TryGetComponent(out IUserProcessable obj))
             {
                 obj.Process();
             }

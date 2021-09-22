@@ -6,11 +6,20 @@ namespace DefaultNamespace
 {
     public class ResourceTileController : TileController
     {
-        public static event Action<ResourceData> ResourcePicked = delegate {  };
-            
+        public static event Action<ResourceData> ResourcePicked = delegate { };
+
         [SerializeField] private ResourceData _resource;
 
         #region Public
+
+        public override void Process()
+        {
+            ResourcePicked(_resource);
+            if (_resource.Count == 0)
+            {
+                Deplete();
+            }
+        }
 
         #endregion
 
@@ -23,16 +32,7 @@ namespace DefaultNamespace
         #endregion
 
         #region Private
-
-        public override void Process()
-        {
-            ResourcePicked(_resource);
-            if (_resource.Count == 0)
-            {
-                Deplete();
-            }
-        }
-
+        
         #endregion
     }
 }

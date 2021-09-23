@@ -7,9 +7,9 @@ namespace DefaultNamespace
 {
     public class InventoryManager : MonoBehaviour
     {
-        
-        private readonly Dictionary<ResourceType, ResourceData> _resources = new Dictionary<ResourceType, ResourceData>();
-        
+        private readonly Dictionary<ResourceType, ResourceData> _resources =
+            new Dictionary<ResourceType, ResourceData>();
+
         #region Public
 
         public void Add(ResourceData resource)
@@ -20,13 +20,14 @@ namespace DefaultNamespace
             }
             else
             {
-                _resources.Add(resource.Type, resource);   
+                _resources.Add(resource.Type, resource);
             }
         }
 
         public bool TryPay(ResourceData requiredResource)
         {
-            if (_resources.TryGetValue(requiredResource.Type, out ResourceData savedResource) && savedResource.Take(requiredResource.Count))
+            if (_resources.TryGetValue(requiredResource.Type, out ResourceData savedResource) &&
+                savedResource.Take(requiredResource.Count))
             {
                 return true;
             }
@@ -36,10 +37,15 @@ namespace DefaultNamespace
             }
         }
 
+        public bool TryPay(List<ResourceData> requiredResource)
+        {
+            return true;
+        }
+
         #endregion
 
         #region Unity
-        
+
         #endregion
 
         #region Action

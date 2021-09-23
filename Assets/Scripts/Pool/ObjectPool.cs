@@ -23,6 +23,11 @@ namespace Pool
             {
                 Prepare(AssetManager.Instance.TileDataList[i].Prefab, AssetManager.Instance.TileDataList[i].PrepareCount);
             }
+            
+            for (int i = 0; i < AssetManager.Instance.BuildingDataSoList.Count; i++)
+            {
+                Prepare(AssetManager.Instance.BuildingDataSoList[i].Prefab, 1);
+            }
         }
         
 
